@@ -30,15 +30,17 @@ const App = () => {
   }
 
   const nextAnecdotes = () => {
-    const random = Math.floor(Math.random() * (anecdotes.length))
-    setSelected(random)
+    let random;
+    do {
+      random = Math.floor(Math.random() * anecdotes.length);
+    } while (random === selected);
+
+    setSelected(random);
+    console.log(random)
   }
 
-  const largestVote = () => {
-    const largest = Math.max(...votes)
-    const largestIndex = votes.indexOf(largest)
-    return largestIndex
-  }
+  const largest = Math.max(...votes)
+  const largestIndex = votes.indexOf(largest)
 
   return (
     <>
@@ -49,8 +51,8 @@ const App = () => {
       <Button onClick={nextAnecdotes} text="next anecdotes"/>
 
       <h2>Anecdote with most votes</h2>
-      <div>{anecdotes[largestVote()]}</div>
-      <div>has {votes[largestVote()]} votes</div>
+      <div>{anecdotes[largestIndex]}</div>
+      <div>has {votes[largestIndex]} votes</div>
     </>
   )
 }
