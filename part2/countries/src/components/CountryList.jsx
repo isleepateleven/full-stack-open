@@ -1,11 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import CountryDetails from './CountryDetails'
 
 const CountryList = ({ countries, filter }) => {
     const [selectedCountry, setSelectedCountry] = useState(null)
+
+    useEffect(() => {
+        setSelectedCountry(null) // Reset selected country when the filter changes
+    }, [filter])
     
     if (!filter){
-        return <div></div>
+        return null
     }
 
     if (countries.length > 10) {

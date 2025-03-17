@@ -32,8 +32,8 @@ const App = () => {
       })
   }, [])
 
-   // do not render anything if notes is still null
-   if (!notes) { 
+  // do not render anything if notes is still null
+  if (!notes) { 
     return null 
   }
 
